@@ -1,0 +1,1675 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MudiasTira | Profil Saya</title>
+    <style>
+      :root {
+        --bg1: #0a0f1f;
+        --bg2: #120e1d;
+        --panel: rgba(19, 24, 39, 0.78);
+        --panel-2: rgba(14, 17, 30, 0.94);
+        --text: #f5f7ff;
+        --muted: #d7dff6;
+        --accent: #e11d2e;
+        --accent-2: #0f5bd8;
+        --accent-3: #fbbf24;
+        --success: #34d399;
+        --shadow: 0 20px 45px rgba(0, 0, 0, 0.38);
+        --red-soft: rgba(225, 29, 46, 0.18);
+        --blue-soft: rgba(15, 91, 216, 0.18);
+      }
+
+      * { box-sizing: border-box; }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        color: var(--text);
+        background:
+          url('https://images.hdqwalls.com/download/spiderman-2-2023-5k-gy-1336x768.jpg') center/cover no-repeat fixed,
+          linear-gradient(135deg, rgba(196, 30, 58, 0.7) 0%, rgba(30, 58, 138, 0.7) 50%, rgba(0, 0, 0, 0.8) 100%);
+        background-blend-mode: overlay;
+        min-height: 100vh;
+        position: relative;
+        overflow-x: hidden;
+      }
+
+      @media (max-width: 768px) {
+        body {
+          background:
+            url('https://images.hdqwalls.com/download/spiderman-2-2023-5k-gy-1336x768.jpg') center/cover no-repeat fixed,
+            linear-gradient(135deg, rgba(196, 30, 58, 0.8) 0%, rgba(30, 58, 138, 0.8) 50%, rgba(0, 0, 0, 0.9) 100%);
+          background-blend-mode: overlay;
+        }
+      }
+
+      @media (max-width: 480px) {
+        body {
+          background:
+            url('https://i.pinimg.com/originals/b5/75/a6/b575a6fb9c4bca0e3b1896ed670abe1d.jpg') center/cover no-repeat fixed,
+            linear-gradient(135deg, rgba(196, 30, 58, 0.85) 0%, rgba(30, 58, 138, 0.85) 50%, rgba(0, 0, 0, 0.95) 100%);
+          background-blend-mode: overlay;
+        }
+      }
+
+      body::before,
+      body::after {
+        content: "";
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        z-index: 0;
+      }
+
+      body::before {
+        background:
+          linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+        background-size: 24px 24px;
+        mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
+      }
+
+      body::after {
+        background:
+          radial-gradient(circle at center, rgba(255,255,255,0.08) 0 2px, transparent 3px);
+        background-size: 32px 32px;
+        opacity: 0.3;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .container {
+        width: min(1100px, calc(100% - 32px));
+        margin: 0 auto;
+        position: relative;
+        z-index: 1;
+      }
+
+      .topbar {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        backdrop-filter: blur(12px);
+        background: rgba(10, 15, 31, 0.6);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        box-shadow: 0 12px 28px rgba(0, 0, 0, 0.16);
+      }
+
+      .nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        min-height: 72px;
+        gap: 18px;
+      }
+
+      .brand {
+        font-weight: 900;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        font-size: 1.2rem;
+      }
+
+      .brand span {
+        color: #ff354d;
+        text-shadow: 0 0 18px rgba(255, 53, 77, 0.8);
+      }
+
+      .nav-actions {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        flex-wrap: wrap;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 20px;
+        font-size: 0.95rem;
+        color: rgba(245, 247, 255, 0.8);
+      }
+
+      .google-search {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 999px;
+        padding: 8px 12px;
+        min-width: 220px;
+      }
+
+      .google-search input {
+        flex: 1;
+        background: transparent;
+        border: none;
+        color: var(--text);
+        font-size: 0.92rem;
+        outline: none;
+      }
+
+      .google-search input::placeholder {
+        color: rgba(255, 255, 255, 0.5);
+      }
+
+      .google-search button {
+        border: none;
+        border-radius: 999px;
+        background: linear-gradient(135deg, var(--accent), var(--accent-2));
+        color: white;
+        font-weight: 700;
+        padding: 8px 12px;
+        cursor: pointer;
+      }
+
+      .nav-links a {
+        padding: 8px 12px;
+        border-radius: 999px;
+        transition: 0.2s ease;
+      }
+
+      .nav-links a:hover {
+        color: white;
+        background: linear-gradient(135deg, rgba(225,29,46,0.2), rgba(15,91,216,0.18));
+        box-shadow: inset 0 0 0 1px rgba(255,255,255,0.08);
+      }
+
+      .hero {
+        padding: 80px 0 60px;
+      }
+
+      .hero-wrap {
+        display: grid;
+        grid-template-columns: 1.25fr 0.75fr;
+        gap: 30px;
+        align-items: center;
+      }
+
+      .hero-copy {
+        padding: 20px 0;
+      }
+
+      .eyebrow {
+        display: inline-block;
+        padding: 8px 14px;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 999px;
+        background: linear-gradient(135deg, rgba(225, 29, 46, 0.2), rgba(15, 91, 216, 0.12));
+        color: #ffe5e8;
+        font-size: 0.8rem;
+        letter-spacing: 0.08rem;
+        text-transform: uppercase;
+        margin-bottom: 18px;
+        box-shadow: 0 0 20px rgba(225, 29, 46, 0.25);
+      }
+
+      h1 {
+        font-size: clamp(2.4rem, 4vw, 4.6rem);
+        line-height: 1.08;
+        margin: 0 0 18px;
+        text-shadow: 0 10px 25px rgba(0,0,0,0.25);
+      }
+
+      h1 .highlight {
+        color: #f8fcff;
+        background: linear-gradient(135deg, #ff455b, #6da7ff);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+
+      .lead {
+        color: var(--muted);
+        font-size: 1.12rem;
+        line-height: 1.8;
+        max-width: 680px;
+      }
+
+      .cta-row {
+        display: flex;
+        gap: 16px;
+        margin-top: 24px;
+        flex-wrap: wrap;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 12px;
+        padding: 14px 22px;
+        font-weight: 700;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+
+      .btn:hover {
+        transform: translateY(-2px) scale(1.01);
+      }
+
+      .btn-primary {
+        background: linear-gradient(135deg, #e11d2e, #1d5de8);
+        color: white;
+        box-shadow: 0 15px 30px rgba(225, 29, 46, 0.38);
+      }
+
+      .btn-secondary {
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        background: rgba(255, 255, 255, 0.04);
+        color: white;
+        box-shadow: inset 0 0 0 1px rgba(255,255,255,0.05);
+      }
+
+      .profile-card {
+        background: linear-gradient(180deg, rgba(225, 29, 46, 0.18), rgba(18, 22, 39, 0.8));
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 28px;
+        padding: 26px;
+        box-shadow: var(--shadow);
+        position: relative;
+        overflow: visible;
+      }
+
+      .portrait-media {
+        position: relative;
+        margin: 0 auto 18px;
+        max-width: 300px;
+      }
+
+      .portrait-video {
+        display: block;
+        width: 100%;
+        max-width: 300px;
+        aspect-ratio: 1;
+        margin: 0 auto;
+        border-radius: 26px;
+        background:
+          linear-gradient(135deg, rgba(225, 29, 46, 0.82), rgba(15, 91, 216, 0.8)),
+          url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><rect width="200" height="200" fill="none"/><circle cx="100" cy="76" r="36" fill="%23f8fafc" opacity="0.75"/><path d="M46 170c10-28 36-42 54-42s44 14 54 42" fill="%23f8fafc" opacity="0.75"/></svg>') center/cover no-repeat;
+        position: relative;
+        overflow: hidden;
+        border: 3px solid rgba(255,255,255,0.16);
+        box-shadow: 0 18px 30px rgba(15,91,216,0.24);
+        object-fit: cover;
+      }
+
+      .portrait-video[poster] {
+        object-fit: cover;
+      }
+
+      .portrait-controls {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-top: 12px;
+        background: rgba(15, 23, 42, 0.7);
+        border: 1px solid rgba(255,255,255,0.08);
+        border-radius: 999px;
+        padding: 8px 12px;
+      }
+
+      .portrait-controls label {
+        font-size: 0.76rem;
+        letter-spacing: 0.06rem;
+        text-transform: uppercase;
+        color: rgba(245,247,255,0.8);
+      }
+
+      .portrait-controls input[type="range"] {
+        accent-color: #6da7ff;
+        width: 100%;
+        cursor: pointer;
+      }
+
+      .portrait-gif {
+        position: absolute;
+        width: 90px;
+        height: auto;
+        border-radius: 16px;
+        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25);
+        z-index: 2;
+        pointer-events: none;
+      }
+
+      .portrait-gif-top {
+        display: none;
+      }
+
+      .portrait-gif-bottom {
+        bottom: 120px;
+        right: 20px;
+        left: auto;
+        width: 90px;
+        height: auto;
+      }
+
+      .portrait-gif-side {
+        top: -18px;
+        left: 10px;
+        right: auto;
+        transform: none;
+        width: 90px;
+      }
+
+      .profile-card::before {
+        content: "";
+        position: absolute;
+        inset: 10px;
+        border: 1px solid rgba(255,255,255,0.08);
+        border-radius: 22px;
+        pointer-events: none;
+      }
+
+      .avatar {
+        display: block;
+        width: 100%;
+        max-width: 300px;
+        aspect-ratio: 1;
+        margin: 0 auto 20px;
+        border-radius: 26px;
+        background:
+          linear-gradient(135deg, rgba(225, 29, 46, 0.82), rgba(15, 91, 216, 0.8)),
+          url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><rect width="200" height="200" fill="none"/><circle cx="100" cy="76" r="36" fill="%23f8fafc" opacity="0.75"/><path d="M46 170c10-28 36-42 54-42s44 14 54 42" fill="%23f8fafc" opacity="0.75"/></svg>') center/cover no-repeat;
+        position: relative;
+        overflow: hidden;
+        border: 3px solid rgba(255,255,255,0.16);
+        box-shadow: 0 18px 30px rgba(15,91,216,0.24);
+        object-fit: cover;
+      }
+
+      .avatar::before {
+        content: "";
+        position: absolute;
+        inset: 14px;
+        border: 2px solid rgba(255,255,255,0.25);
+        border-radius: 18px;
+        transform: rotate(2deg);
+      }
+
+      .avatar::after {
+        content: "MudiasTira";
+        position: absolute;
+        left: 20px;
+        bottom: 18px;
+        font-weight: 800;
+        letter-spacing: 1px;
+        color: white;
+        text-shadow: 0 0 12px rgba(0,0,0,0.6);
+      }
+
+      .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 12px;
+        margin-top: 18px;
+      }
+
+      .stat {
+        padding: 14px 12px;
+        background: rgba(15, 23, 42, 0.7);
+        border-radius: 14px;
+        border: 1px solid rgba(255,255,255,0.06);
+        text-align: center;
+      }
+
+      .stat strong {
+        display: block;
+        font-size: 1.1rem;
+        margin-bottom: 4px;
+        color: var(--accent-2);
+      }
+
+      .section {
+        padding: 40px 0;
+      }
+
+      .section-header {
+        margin-bottom: 26px;
+      }
+
+      .section-header h2 {
+        font-size: clamp(1.8rem, 2vw, 2.6rem);
+        margin: 0 0 12px;
+      }
+
+      .section-header p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.8;
+      }
+
+      .info-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 20px;
+      }
+
+      .info-card {
+        background: var(--panel);
+        border: 1px solid rgba(255,255,255,0.08);
+        border-radius: 20px;
+        padding: 22px;
+        box-shadow: var(--shadow);
+      }
+
+      .info-card h3 {
+        margin-top: 0;
+        margin-bottom: 10px;
+        color: var(--accent-2);
+      }
+
+      .info-card p, .info-card li {
+        color: var(--muted);
+        line-height: 1.8;
+      }
+
+      .tag-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 14px;
+      }
+
+      .tag {
+        padding: 8px 12px;
+        border-radius: 999px;
+        background: rgba(34, 211, 238, 0.08);
+        border: 1px solid rgba(34, 211, 238, 0.2);
+        color: var(--accent-2);
+        font-size: 0.85rem;
+      }
+
+      .timeline {
+        display: grid;
+        gap: 18px;
+      }
+
+      .timeline-item {
+        display: grid;
+        grid-template-columns: 160px 1fr;
+        gap: 20px;
+        background: rgba(15, 23, 42, 0.75);
+        border: 1px solid rgba(255,255,255,0.07);
+        padding: 16px 18px;
+        border-radius: 18px;
+      }
+
+      .timeline-year {
+        font-weight: 800;
+        color: var(--accent-3);
+        font-size: 1.1rem;
+      }
+
+      .timeline-item p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.8;
+      }
+
+      .age-box {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 20px;
+      }
+
+      .count-card {
+        background: linear-gradient(180deg, rgba(124, 58, 237, 0.12), rgba(15, 23, 42, 0.9));
+        border: 1px solid rgba(255,255,255,0.08);
+        border-radius: 18px;
+        padding: 20px 18px;
+        text-align: center;
+      }
+
+      .count-card .value {
+        font-size: clamp(1.8rem, 3vw, 2.8rem);
+        font-weight: 800;
+        color: var(--accent-2);
+      }
+
+      .count-card .label {
+        margin-top: 8px;
+        color: var(--muted);
+      }
+
+      .ai-panel {
+        background: linear-gradient(180deg, rgba(34, 211, 238, 0.08), rgba(15, 23, 42, 0.9));
+        border: 1px solid rgba(255,255,255,0.08);
+        border-radius: 24px;
+        padding: 22px;
+        box-shadow: var(--shadow);
+      }
+
+      .chat-box {
+        max-height: 320px;
+        overflow-y: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+        padding: 14px;
+        border-radius: 18px;
+        background: rgba(15, 23, 42, 0.7);
+        border: 1px solid rgba(255,255,255,0.06);
+        margin-bottom: 18px;
+      }
+
+      .msg {
+        display: flex;
+        max-width: 85%;
+      }
+
+      .msg.user {
+        justify-content: flex-end;
+        margin-left: auto;
+      }
+
+      .msg.bot {
+        justify-content: flex-start;
+      }
+
+      .bubble {
+        padding: 12px 14px;
+        border-radius: 16px;
+        line-height: 1.7;
+        color: var(--text);
+      }
+
+      .msg.user .bubble {
+        background: linear-gradient(135deg, var(--accent), var(--accent-2));
+        color: white;
+        border-bottom-right-radius: 6px;
+      }
+
+      .msg.bot .bubble {
+        background: rgba(255,255,255,0.04);
+        border: 1px solid rgba(255,255,255,0.08);
+        border-bottom-left-radius: 6px;
+      }
+
+      .chat-actions {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 14px;
+        flex-wrap: wrap;
+      }
+
+      .mode-btn {
+        border: 1px solid rgba(255,255,255,0.08);
+        background: rgba(15, 23, 42, 0.7);
+        color: var(--muted);
+        border-radius: 999px;
+        padding: 8px 14px;
+        cursor: pointer;
+        font-weight: 700;
+        transition: all 0.2s ease;
+      }
+
+      .mode-btn.active {
+        background: linear-gradient(135deg, var(--accent), var(--accent-2));
+        color: white;
+        border-color: transparent;
+      }
+
+      .chat-form {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 12px;
+      }
+
+      .chat-form input,
+      .google-search-inline input {
+        width: 100%;
+        border: 1px solid rgba(255,255,255,0.08);
+        background: rgba(15, 23, 42, 0.85);
+        color: var(--text);
+        border-radius: 12px;
+        padding: 14px 16px;
+        font-size: 1rem;
+      }
+
+      .google-search-inline {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 12px;
+        margin-top: 18px;
+      }
+
+      .google-search-inline button {
+        border: none;
+        border-radius: 12px;
+        background: linear-gradient(135deg, var(--accent-2), var(--accent));
+        color: white;
+        font-weight: 700;
+        cursor: pointer;
+        padding: 0 18px;
+      }
+
+      .chat-form input:focus {
+        outline: 2px solid rgba(34, 211, 238, 0.35);
+        border-color: rgba(34, 211, 238, 0.4);
+      }
+
+      .chat-form button {
+        border: none;
+        border-radius: 12px;
+        background: linear-gradient(135deg, var(--accent), var(--accent-2));
+        color: white;
+        font-weight: 700;
+        padding: 0 18px;
+        cursor: pointer;
+      }
+
+      footer {
+        padding: 34px 0 60px;
+        color: var(--muted);
+        text-align: center;
+      }
+
+      @media (max-width: 860px) {
+        .hero-wrap,
+        .info-grid,
+        .age-box {
+          grid-template-columns: 1fr;
+        }
+
+        .nav {
+          flex-direction: column;
+          justify-content: center;
+          gap: 12px;
+          padding: 16px 0;
+        }
+
+        .nav-actions {
+          width: 100%;
+          justify-content: center;
+        }
+
+        .nav-links {
+          gap: 10px;
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+
+        .google-search {
+          width: min(100%, 300px);
+        }
+
+        .timeline-item {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="container nav">
+        <div class="brand">Mudias<span>Spidey</span></div>
+        <div class="nav-actions">
+          <nav class="nav-links" aria-label="Navigasi utama">
+            <a href="#profil">Profil</a>
+            <a href="#hobi">Hobi</a>
+            <a href="#ai">AI</a>
+            <a href="#umur">Umur</a>
+            <a href="#kontak">Kontak</a>
+          </nav>
+          <form class="google-search" id="googleSearchForm" action="https://www.google.com/search" method="get" target="_blank">
+            <input type="text" name="q" placeholder="Cari di Google..." aria-label="Cari di Google" />
+            <button type="submit">Cari</button>
+          </form>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="container hero-wrap">
+          <div class="hero-copy">
+            <div class="eyebrow">Halo, Saya MudiasTira</div>
+            <h1>Spidey vibes, <span class="highlight">semangat pahlawan baru</span></h1>
+            <p class="lead">
+              Saya adalah seseorang yang suka bermain game, belajar bahasa Inggris, dan terus
+              mengasah kemampuan dalam coding aplikasi. Saya juga sangat antusias belajar hal baru,
+              berkreasi, dan berkembang setiap hari dengan gaya yang lebih berani, keren, dan penuh semangat seperti Spider-Man.
+            </p>
+            <div class="cta-row">
+              <a class="btn btn-primary" href="#profil">Lihat Profil</a>
+              <a class="btn btn-secondary" href="#umur">Cek Umur Saya</a>
+              <a class="btn btn-secondary" href="#ai">Tanya AI</a>
+            </div>
+
+            <form class="google-search-inline" id="googleSearchInlineForm" action="https://www.google.com/search" method="get" target="_blank">
+              <input type="text" name="q" placeholder="Cari informasi apa pun di Google..." aria-label="Pencarian Google" />
+              <button type="submit">Cari Google</button>
+            </form>
+          </div>
+
+          <div class="profile-card">
+            <img class="portrait-gif portrait-gif-bottom" src="https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3cGwycGh1ZXhmODZjd2h6cWsxNDV0cWFmb3IwYmFvbWpleXd6MW0yeiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/wRpPHQRR1lzxOmzrcp/giphy.gif" alt="GIF dekorasi bawah kanan" />
+            <img class="portrait-gif portrait-gif-side" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExN3NtdGhxYW00bGl2OWUyNXRmdXNqNWlranN5M3Mxa2Zmc2o3eHhqbyZlcD12MV9naWZzX3NlYXJjaCZjdD1n/bVnQbl3wfDaMi6UlEE/giphy.gif" alt="GIF dekorasi samping tengah" />
+            <div class="portrait-media">
+              <video
+                id="portraitVideo"
+                class="portrait-video"
+                autoplay
+                muted
+                loop
+                playsinline
+                preload="auto"
+                aria-label="Video profil MudiasTira"
+              >
+                <source src="https://videotourl.com/videos/1787456718857-5bac8175-c69c-44cf-8e03-ba0fbf225756.mp4" />
+              </video>
+              <div class="portrait-controls">
+                <label for="portraitVolume">Volume</label>
+                <input id="portraitVolume" type="range" min="0" max="1" step="0.01" value="0.35" aria-label="Atur volume video portrait" />
+              </div>
+            </div>
+            <div class="stats-grid">
+              <div class="stat">
+                <strong>25</strong>
+                <span>Nov</span>
+              </div>
+              <div class="stat">
+                <strong>2010</strong>
+                <span>Lahir</span>
+              </div>
+              <div class="stat">
+                <strong>Coder</strong>
+                <span>Gamer</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="profil" class="section">
+        <div class="container">
+          <div class="section-header">
+            <h2>Tentang Saya</h2>
+            <p>Perkenalan singkat tentang diri saya agar lebih kenal dan lebih dekat.</p>
+          </div>
+
+          <div class="info-grid">
+            <article class="info-card">
+              <h3>Data Diri</h3>
+              <p>Nama: <strong>MudiasTira</strong></p>
+              <p>Alamat: <strong>Yang Ytta Ytta Aja</strong></p>
+              <p>Tanggal lahir: <strong>25 November 2010</strong></p>
+            </article>
+
+            <article class="info-card">
+              <h3>Hobi Saya</h3>
+              <ul>
+                <li>Bermain game</li>
+                <li>Belajar bahasa Inggris</li>
+                <li>Mengoding aplikasi</li>
+              </ul>
+            </article>
+
+            <article class="info-card">
+              <h3>Minat</h3>
+              <div class="tag-list">
+                <span class="tag">Game</span>
+                <span class="tag">English</span>
+                <span class="tag">Coding</span>
+                <span class="tag">Belajar</span>
+                <span class="tag">Teknologi</span>
+                <span class="tag">Kreatif</span>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="hobi" class="section">
+        <div class="container">
+          <div class="section-header">
+            <h2>Hobi dan Aktivitas Favorit</h2>
+            <p>Saya enjoy dengan kegiatan yang menantang otak, meningkatkan skill, dan membuat saya terus berkembang.</p>
+          </div>
+
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="timeline-year">Game</div>
+              <p>
+                Saya suka bermain game karena game bisa melatih konsentrasi, strategi, dan cara berpikir cepat.
+                Selain itu, game juga menambah pengalaman dan ide baru untuk siap menghadapi tantangan lain.
+              </p>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-year">Bahasa Inggris</div>
+              <p>
+                Saya senang belajar bahasa Inggris karena bahasa ini sangat penting untuk masa depan, komunikasi,
+                dan membuka peluang lebih luas dalam dunia teknologi dan pendidikan.
+              </p>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-year">Coding</div>
+              <p>
+                Saya suka coding karena dari sana saya bisa menciptakan sesuatu yang bermanfaat, membuat aplikasi,
+                dan merasakan kepuasan saat ide bisa diwujudkan menjadi karya nyata.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="ai" class="section">
+        <div class="container">
+          <div class="section-header">
+            <h2>AI Serbaguna</h2>
+            <p>Tanya apa saja, kapan saja, tanpa batas topik. AI ini siap membantu menjawab pertanyaan umum, ide, belajar, atau sekadar ngobrol.</p>
+          </div>
+
+          <div class="ai-panel">
+            <div class="chat-actions" aria-label="Mode jawaban AI">
+              <button type="button" class="mode-btn active" data-mode="detail">Jawab Detail</button>
+              <button type="button" class="mode-btn" data-mode="simple">Jawab Singkat</button>
+            </div>
+
+            <div id="chatBox" class="chat-box" aria-live="polite">
+              <div class="msg bot">
+                <div class="bubble">Halo! Saya AI serbaguna. Kamu bisa bertanya apa saja seperti belajar, coding, game, teknologi, atau bahkan sekadar ngobrol. Mode saat ini: jawab detail agar penjelasannya lebih lengkap dan mudah dipahami.</div>
+              </div>
+            </div>
+
+            <form id="chatForm" class="chat-form">
+              <input id="chatInput" type="text" placeholder="Tulis pertanyaanmu di sini..." aria-label="Ketik pertanyaan" />
+              <button type="submit">Kirim</button>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <section id="umur" class="section">
+        <div class="container">
+          <div class="section-header">
+            <h2>Informasi Umur Saya</h2>
+            <p>Berikut data umur saya dan waktu masih tersisa sampai saya naik umur lagi.</p>
+          </div>
+
+          <div class="age-box">
+            <div class="count-card">
+              <div id="ageYears" class="value">0</div>
+              <div class="label">Tahun</div>
+            </div>
+            <div class="count-card">
+              <div id="ageMonths" class="value">0</div>
+              <div class="label">Bulan</div>
+            </div>
+            <div class="count-card">
+              <div id="ageDays" class="value">0</div>
+              <div class="label">Hari</div>
+            </div>
+            <div class="count-card">
+              <div id="nextAge" class="value">15</div>
+              <div class="label">Umur Berikutnya</div>
+            </div>
+          </div>
+
+          <div class="section-header" style="margin-top: 28px;">
+            <p id="ageSummary" style="font-size: 1.06rem; color: var(--text);"></p>
+            <p id="nextBirthdayText" style="font-size: 1.06rem; color: var(--text);"></p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer id="kontak">
+      <div class="container">
+        <p>Terima kasih sudah membaca perkenalan saya. Semoga kita bisa saling kenal lebih dekat.</p>
+      </div>
+    </footer>
+
+    <script>
+      const birthDate = new Date('2010-11-25T00:00:00');
+
+      function diffInMonthsDays(start, end) {
+        let months = (end.getFullYear() - start.getFullYear()) * 12 + (end.getMonth() - start.getMonth());
+        let days = end.getDate() - start.getDate();
+
+        if (days < 0) {
+          const prevMonth = new Date(end.getFullYear(), end.getMonth(), 0);
+          days += prevMonth.getDate();
+          months -= 1;
+        }
+
+        return { months, days };
+      }
+
+      function getAgeParts() {
+        const now = new Date();
+        let years = now.getFullYear() - birthDate.getFullYear();
+        let months = now.getMonth() - birthDate.getMonth();
+        let days = now.getDate() - birthDate.getDate();
+
+        if (months < 0 || (months === 0 && days < 0)) {
+          years--;
+          months += 12;
+        }
+
+        if (days < 0) {
+          const prevMonth = new Date(now.getFullYear(), now.getMonth(), 0);
+          days += prevMonth.getDate();
+          months--;
+        }
+
+        if (months < 0) {
+          months += 12;
+        }
+
+        return { years, months, days };
+      }
+
+      function getNextBirthdayInfo() {
+        const now = new Date();
+        const thisYearBirthday = new Date(now.getFullYear(), birthDate.getMonth(), birthDate.getDate());
+        let target = thisYearBirthday;
+
+        if (target < now) {
+          target = new Date(now.getFullYear() + 1, birthDate.getMonth(), birthDate.getDate());
+        }
+
+        const remainingMs = target - now;
+        const remainingDays = Math.ceil(remainingMs / (1000 * 60 * 60 * 24));
+        const months = Math.floor(remainingDays / 30);
+        const days = remainingDays % 30;
+
+        return {
+          nextAge: now.getFullYear() - birthDate.getFullYear() + 1,
+          months,
+          days,
+          targetDate: target,
+          remainingDays
+        };
+      }
+
+      function updateAge() {
+        const age = getAgeParts();
+        const nextBirthday = getNextBirthdayInfo();
+
+        document.getElementById('ageYears').textContent = age.years;
+        document.getElementById('ageMonths').textContent = age.months;
+        document.getElementById('ageDays').textContent = age.days;
+        document.getElementById('nextAge').textContent = nextBirthday.nextAge;
+
+        document.getElementById('ageSummary').textContent =
+          `Saat ini saya berusia ${age.years} tahun, ${age.months} bulan, dan ${age.days} hari.`;
+
+        document.getElementById('nextBirthdayText').textContent =
+          `Saya akan naik umur lagi dalam ${nextBirthday.months} bulan ${nextBirthday.days} hari, tepatnya pada ${nextBirthday.targetDate.toLocaleDateString('id-ID', {
+            day: 'numeric', month: 'long', year: 'numeric'
+          })}.`;
+      }
+
+      updateAge();
+
+      // Gemini API Configuration
+      const GEMINI_API_KEY = 'AQ.Ab8RN6LggTyUivK-IGYUAVItkFCFHpnm5PgFgva_yw5Cr-T62g'; // Ganti dengan API key Anda
+        const GEMINI_API_URL = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent';
+      async function askGemini(question) {
+        try {
+          const response = await fetch(`${GEMINI_API_URL}?key=${GEMINI_API_KEY}`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              contents: [{
+                parts: [{
+                  text: question
+                }]
+              }]
+            })
+          });
+
+          if (!response.ok) {
+            return `Maaf, terjadi kesalahan saat mengakses Gemini. Status: ${response.status}`;
+          }
+
+          const data = await response.json();
+          
+          if (data.candidates && data.candidates[0] && data.candidates[0].content && data.candidates[0].content.parts[0]) {
+            return data.candidates[0].content.parts[0].text;
+          }
+
+          return 'Gemini tidak memberikan respons yang jelas. Silakan coba lagi.';
+        } catch (error) {
+          return `Error: ${error.message}. Pastikan API key Gemini sudah benar.`;
+        }
+      }
+
+      const chatForm = document.getElementById('chatForm');
+      const chatInput = document.getElementById('chatInput');
+      const chatBox = document.getElementById('chatBox');
+      const googleSearchForm = document.getElementById('googleSearchForm');
+      const googleSearchInlineForm = document.getElementById('googleSearchInlineForm');
+      const portraitVideo = document.getElementById('portraitVideo');
+      const portraitVolume = document.getElementById('portraitVolume');
+
+      if (portraitVideo && portraitVolume) {
+        portraitVideo.loop = true;
+        portraitVideo.volume = Number(portraitVolume.value || 0.35);
+        portraitVideo.muted = true;
+
+        const tryAutoplayPortrait = () => {
+          portraitVideo.muted = true;
+          portraitVideo.volume = Number(portraitVolume.value || 0.35);
+          portraitVideo.play().catch(() => {
+            // Browser memblok autoplay jika belum ada interaksi user.
+            // Video tetap bisa diputar saat pengguna menyesuaikan volume.
+          });
+        };
+
+        tryAutoplayPortrait();
+
+        portraitVolume.addEventListener('input', function () {
+          const value = Number(this.value);
+          portraitVideo.volume = value;
+          portraitVideo.muted = value <= 0;
+
+          if (!portraitVideo.paused) {
+            portraitVideo.play().catch(() => {});
+          } else if (value > 0) {
+            portraitVideo.play().catch(() => {});
+          }
+        });
+      }
+
+      function openGoogleSearch(query) {
+        const text = (query || '').trim();
+        if (!text) return;
+        window.open(`https://www.google.com/search?q=${encodeURIComponent(text)}`, '_blank');
+      }
+
+      googleSearchForm.addEventListener('submit', function (event) {
+        const input = googleSearchForm.querySelector('input[name="q"]');
+        if (!input || !input.value.trim()) {
+          event.preventDefault();
+          input?.focus();
+          return;
+        }
+      });
+
+      googleSearchInlineForm.addEventListener('submit', function (event) {
+        const input = googleSearchInlineForm.querySelector('input[name="q"]');
+        if (!input || !input.value.trim()) {
+          event.preventDefault();
+          input?.focus();
+          return;
+        }
+      });
+
+      function addMessage(message, sender = 'bot') {
+        const wrapper = document.createElement('div');
+        wrapper.className = `msg ${sender}`;
+
+        const bubble = document.createElement('div');
+        bubble.className = 'bubble';
+        bubble.textContent = message;
+
+        wrapper.appendChild(bubble);
+        chatBox.appendChild(wrapper);
+        chatBox.scrollTop = chatBox.scrollHeight;
+      }
+
+      function solveMathQuestion(question) {
+        const raw = question
+          .replace(/,/g, '.')
+          .replace(/\s+/g, '')
+          .replace(/x/gi, '*')
+          .replace(/÷/g, '/')
+          .replace(/kali/gi, '*')
+          .replace(/bagi/gi, '/')
+          .replace(/tambah/gi, '+')
+          .replace(/kurang/gi, '-')
+          .replace(/sama dengan/gi, '=')
+          .replace(/hasilnya/gi, '')
+          .replace(/berapa/gi, '');
+
+        const expression = raw.replace(/[^0-9+\-*/().%]/g, '');
+
+        if (!expression || expression === '') {
+          return null;
+        }
+
+        try {
+          const result = Function(`"use strict"; return (${expression});`)();
+          if (Number.isFinite(result)) {
+            return `Hasilnya adalah ${Number(result.toFixed(10))}.`;
+          }
+        } catch (error) {
+          return null;
+        }
+
+        return null;
+      }
+
+      function getMemory() {
+        try {
+          const saved = sessionStorage.getItem('mudiastiraMemory');
+          return saved ? JSON.parse(saved) : { name: 'teman', topics: [], facts: {} };
+        } catch (error) {
+          return { name: 'teman', topics: [], facts: {} };
+        }
+      }
+
+      function saveMemory(memory) {
+        try {
+          sessionStorage.setItem('mudiastiraMemory', JSON.stringify(memory));
+        } catch (error) {
+          // Abaikan jika browser menolak penyimpanan.
+        }
+      }
+
+      function detectTopic(lower) {
+        const topicPatterns = {
+          matematika: /(matematika|rumus|aljabar|geometri|hitung|angka|deret|persamaan|statistik|integral|akar|kali|bagi|kurang|tambah|pangkat|akar|pecahan)/,
+          ipa: /(ipa|biologi|fisika|kimia|sains|alam|sel|reaksi|energi|zat|planet|gravitasi|atom|molekul|cahaya|bunyi)/,
+          sejarah: /(sejarah|perang|kerajaan|zaman|dinasti|kolonial|indonesia|masa lalu|penjajahan|kemerdekaan|revolusi)/,
+          tokoh: /(tokoh|biografi|ilmuwan|presiden|penulis|musisi|artis|atlet|panutan|figur|newton|einstein|gandi|soekarno|shakespeare|mozart|pelari|penemunya|penciptanya|curie|darwin|tesla|churchill|hawking|da vinci|galileo)/,
+          sosial: /(sosial|geografi|ekonomi|pkn|politik|masyarakat|budaya|demografi|negara|pemerintah|hukum|pajak)/,
+          coding: /(coding|program|kode|javascript|html|css|python|software|developer|algoritma|database|function|variable|loop|array)/,
+          game: /(game|gaming|esport|strategi|level|karakter|main|bermain|pemain)/,
+          bahasa: /(bahasa inggris|english|grammar|kosakata|tenses|dialog|bahasa|vocab|pronunciation|speaking)/,
+          teknologi: /(teknologi|ai|artificial intelligence|robot|internet|gadget|app|cyber|software|digital|aplikasi|website)/,
+          motivasi: /(motivasi|semangat|jadwal|cara belajar|sukses|disiplin|konsisten|produktif|tekun|kerja keras|usaha)/,
+          psikologi: /(psikologi|mental|emosi|motivasi diri|kepercayaan diri|stress|konflik|perasaan|pikiran|depresi)/,
+          umum: /(apa|siapa|kapan|mengapa|bagaimana|jelaskan|definisi|arti|contoh|kenapa|gimana)/
+        };
+
+        for (const [key, pattern] of Object.entries(topicPatterns)) {
+          if (pattern.test(lower)) {
+            return key;
+          }
+        }
+
+        return 'umum';
+      }
+
+      function interpretImplicitQuestion(question) {
+        const lower = question.toLowerCase();
+        
+        // Deteksi pertanyaan singkat atau kalimat yang bukan tanya formal
+        if (lower.match(/^([\w\s]+)[\?!.]*$/) && lower.split(' ').length <= 4) {
+          // Deteksi konteks dari kata kunci
+          if (/\d+\s*[+\-*/]\s*\d+|\d+\s*=/.test(question)) {
+            return 'hitung ini untuk saya';
+          }
+          if (lower.match(/^(contoh|misalnya|seperti apa|gimana|caranya)/)) {
+            return 'berikan contoh tentang ' + question;
+          }
+          if (lower.match(/^(mengapa|kenapa|alasan|sebab)/)) {
+            return 'jelaskan mengapa ' + question;
+          }
+          if (lower.match(/^(apa|apa itu|apa saja)/)) {
+            return 'jelaskan tentang ' + question;
+          }
+          if (lower.match(/^(siapa|siapa itu)/)) {
+            return 'siapa itu ' + question;
+          }
+        }
+
+        // Deteksi perintah singkat yang bukan pertanyaan formal
+        if (lower.match(/^[a-z\s]+$/) && !lower.includes('?') && lower.split(' ').length <= 5) {
+          const keywords = lower.split(' ');
+          if (keywords.some(k => ['jelaskan', 'terangkan', 'sebutkan', 'berikan', 'buatkan', 'tuliskan'].includes(k))) {
+            return question; // Sudah perintah jelas
+          }
+          // Anggap sebagai topik yang ingin dipelajari
+          return 'jelaskan tentang ' + question;
+        }
+
+        return question;
+      }
+
+      function buildStructuredAnswer(shortAnswer, detail, example, tip, detailed = false) {
+        const parts = [`Jawaban singkat: ${shortAnswer}`];
+        if (detail) parts.push(`\n\nPenjelasan: ${detail}`);
+        if (detailed) {
+          if (example) parts.push(`\n\nContoh konkret: ${example}`);
+          if (tip) parts.push(`\n\nTips yang bisa langsung dipraktikkan: ${tip}`);
+          parts.push('\n\nLangkahnya: pahami inti masalah, cari hubungan sebab-akibat, lalu terapkan ke contoh yang relevan.');
+        } else {
+          if (example) parts.push(`\n\nContoh: ${example}`);
+          if (tip) parts.push(`\n\nTips: ${tip}`);
+        }
+        parts.push('\n\nKalau mau, saya bisa lanjutkan dengan versi yang lebih sederhana, lebih detail, atau dibuat dalam bentuk poin-poin.');
+        return parts.join('');
+      }
+
+      function handleFamousFigures(question, detailed = true) {
+        const lower = question.toLowerCase();
+        const figures = {
+          'albert einstein': {
+            short: 'Albert Einstein adalah ilmuwan fisika revolusioner yang menemukan teori relativitas.',
+            detail: 'Albert Einstein (1879-1955) adalah fisikawan Jerman yang mengubah cara kita memahami ruang, waktu, dan gravitasi. Teori relativitas khususnya dan teori relativitas umum menunjukkan bahwa waktu dan ruang bersifat relatif, bukan absolut. Ia juga menghasilkan rumus terkenal E=mc², yang menunjukkan hubungan antara energi dan massa.',
+            example: 'Teori relativitasnya menjelaskan bahwa tidak ada kecepatan yang lebih cepat dari cahaya, dan waktu dapat berjalan lebih lambat pada kecepatan tinggi.',
+            tip: 'Belajar dari tokoh ini: keingintahuan tanpa batas dan inovasi pemikiran membuka jalan menuju penemuan besar.'
+          },
+          'isaac newton': {
+            short: 'Isaac Newton adalah ilmuwan Inggris yang menemukan hukum gravitasi dan gerakan.',
+            detail: 'Isaac Newton (1642-1727) adalah ilmuwan Inggris yang merevolusi sains melalui hukum-hukum gerak dan gravitasi universal. Karya utamanya "Philosophiæ Naturalis Principia Mathematica" menjadi fondasi fisika klasik. Ia juga mengembangkan kalkulus dan teori cahaya.',
+            example: 'Hukum gravitasi Newton menjelaskan mengapa benda jatuh ke bumi dan mengapa planet beredar mengelilingi matahari.',
+            tip: 'Belajar dari Newton: dedikasi terhadap penelitian dan kemampuan menghubungkan pola alam menciptakan teori yang bertahan berabad-abad.'
+          },
+          'marie curie': {
+            short: 'Marie Curie adalah ilmuwan Polandia yang menemukan radioaktivitas dan elemen-elemen baru.',
+            detail: 'Marie Curie (1867-1934) adalah ilmuwan Polandia-Perancis yang memenangkan dua hadiah Nobel, satu-satunya wanita yang mencapai prestasi ini di masanya. Ia melakukan penelitian tentang radioaktivitas, menemukan elemen polonium dan radium, serta membuka jalan bagi penggunaan radioaktivitas dalam kedokteran.',
+            example: 'Penelitiannya tentang radioaktivitas membuka kemungkinan penggunaan energi nuklir dan terapi kanker modern.',
+            tip: 'Belajar dari Curie: ketekunan menghadapi tantangan, terutama sebagai wanita di dunia sains, membuahkan kontribusi luar biasa.'
+          },
+          'leonardo da vinci': {
+            short: 'Leonardo da Vinci adalah seniman, ilmuwan, dan penemu Renaisans yang multitalenta.',
+            detail: 'Leonardo da Vinci (1452-1519) adalah seorang jenius Renaisans yang ahli di bidang seni, sains, teknik, anatomi, dan arsitektur. Ia melukis karya-karya ikonik seperti "Mona Lisa" dan "Last Supper", sekaligus membuat skema mesin dan studi anatomi yang jauh melampaui zamannya.',
+            example: 'Sketsa mesin terbangnya menunjukkan pemahaman mendalam tentang aerodinamika, meskipun teknologi belum memungkinkan realisasinya.',
+            tip: 'Belajar dari da Vinci: menggabungkan seni dan sains, serta kemauan belajar di berbagai bidang menciptakan kreativitas tanpa batas.'
+          },
+          'galileo galilei': {
+            short: 'Galileo Galilei adalah astronom dan fisikawan Itali yang mendukung heliosentrisme.',
+            detail: 'Galileo Galilei (1564-1642) adalah astronom dan fisikawan Itali yang menggunakan teleskop untuk mengamati langit dan menemukan bukti pendukung teori heliosentrisme. Ia juga melakukan eksperimen fisika untuk memahami gerak dan gravitasi, sehingga dianggap pelopor metode ilmiah modern.',
+            example: 'Observasinya menemukan bulan-bulan Jupiter, yang menunjukkan bahwa tidak semua benda langit beredar mengelilingi Bumi.',
+            tip: 'Belajar dari Galileo: pengamatan empiris dan eksperimen adalah cara paling kuat untuk membuktikan kebenaran ilmiah.'
+          },
+          'stephen hawking': {
+            short: 'Stephen Hawking adalah kosmolog yang mempelajari lubang hitam dan asal usul alam semesta.',
+            detail: 'Stephen Hawking (1942-2018) adalah kosmolog Inggris yang memberikan kontribusi besar dalam memahami lubang hitam, asal usul alam semesta, dan waktu. Meskipun mengidap ALS, ia terus berkarya dan mempopulerkan sains melalui buku dan wawancara publik. Penemuan paling terkenal adalah radiasi Hawking, yang menunjukkan lubang hitam bukan benar-benar "hitam".',
+            example: 'Teorinya tentang lubang hitam menggabungkan relativitas umum dan mekanika kuantum, dua teori besar fisika modern.',
+            tip: 'Belajar dari Hawking: ketangguhan menghadapi keterbatasan fisik dan dedikasi pada ilmu pengetahuan menghasilkan warisan abadi.'
+          },
+          'charles darwin': {
+            short: 'Charles Darwin adalah naturalis yang mengembangkan teori evolusi melalui seleksi alam.',
+            detail: 'Charles Darwin (1809-1882) adalah naturalis Inggris yang mengembangkan teori evolusi dan seleksi alam melalui pengamatan selama berlayar di HMS Beagle. Bukunya "On the Origin of Species" mengubah cara kita memahami asal usul kehidupan dan keanekaragaman hayati.',
+            example: 'Observasinya tentang burung finch di Galápagos menunjukkan bagaimana lingkungan yang berbeda menyebabkan adaptasi yang berbeda pada spesies yang sama.',
+            tip: 'Belajar dari Darwin: perjalanan, pengamatan mendalam, dan analisis panjang menghasilkan teori yang mengubah sains.'
+          },
+          'nikola tesla': {
+            short: 'Nikola Tesla adalah penemu Serbia-Amerika yang mengembangkan teknologi kelistrikan AC.',
+            detail: 'Nikola Tesla (1856-1943) adalah penemu Serbia-Amerika yang merevolusi teknologi kelistrikan. Ia mengembangkan sistem arus bolak-balik (AC), transformator, dan transmisi nirkabel. Inovasi-inovasinya menjadi fondasi infrastruktur listrik modern dan teknologi wireless.',
+            example: 'Sistem AC Tesla memungkinkan transmisi listrik jarak jauh yang efisien, menggantikan sistem DC Thomas Edison.',
+            tip: 'Belajar dari Tesla: visi futuristik dan eksperimen berani membuka teknologi yang mengubah peradaban.'
+          },
+          'winston churchill': {
+            short: 'Winston Churchill adalah pemimpin Inggris yang memimpin negaranya selama Perang Dunia II.',
+            detail: 'Winston Churchill (1874-1965) adalah peneramanusia dan politisi Inggris yang menjadi Perdana Menteri selama Perang Dunia II. Kepemimpinannya yang kuat dan pidato inspiratifnya memotivasi rakyat Inggris untuk bertahan menghadapi Nazi Jerman. Ia juga penulis, jurnalis, dan pemenang Hadiah Nobel Sastra.',
+            example: 'Pidatonya "We Shall Never Surrender" menjadi simbol ketangguhan dan determinasi menghadapi krisis.',
+            tip: 'Belajar dari Churchill: kepemimpinan yang tegas, komunikasi yang inspiratif, dan tekad yang kuat mengatasi tantangan terbesar.'
+          },
+          'mahatma gandhi': {
+            short: 'Mahatma Gandhi adalah pemimpin spiritual India yang memimpin kemerdekaan melalui non-kekerasan.',
+            detail: 'Mahatma Gandhi (1869-1948) adalah pemimpin spiritual dan politisi India yang memimpin gerakan kemerdekaan India dari penjajahan Inggris melalui prinsip non-kekerasan (Satyagraha). Filosofinya tentang ketahanan spiritual dan desobediensi sipil menginspirasi gerakan perdamaian di seluruh dunia.',
+            example: 'Marsa Garam (Salt March) pada 1930 adalah aksi non-kekerasan yang menantang monopoli garam Inggris dan menjadi simbol perlawanan damai.',
+            tip: 'Belajar dari Gandhi: kekuatan sejati terletak pada ketenangan pikiran, integritas moral, dan komitmen pada nilai-nilai yang benar.'
+          },
+          'nelson mandela': {
+            short: 'Nelson Mandela adalah pemimpin anti-apartheid Afrika Selatan dan presiden pertama negronya.',
+            detail: 'Nelson Mandela (1918-2013) adalah pemimpin anti-apartheid dan presiden pertama Afrika Selatan yang memilih kulit hitam sebagai mayoritas. Ia dipenjarakan selama 27 tahun namun tidak pernah kehilangan harapan atau semangat. Kepemimpinannya memimpin transformasi damai Afrika Selatan dari sistem apartheid yang diskriminatif.',
+            example: 'Setelah dibebaskan, Mandela menjadi presiden dan fokus pada rekonsiliasi, pendidikan, dan keadilan untuk semua warga Afrika Selatan.',
+            tip: 'Belajar dari Mandela: pengorbanan pribadi untuk keadilan, pemaafan, dan rekonsiliasi menciptakan perubahan sosial yang berkelanjutan.'
+          },
+          'alan turing': {
+            short: 'Alan Turing adalah matematikawan Inggris yang menjadi pelopor komputer dan AI.',
+            detail: 'Alan Turing (1912-1954) adalah matematikawan dan logikawan Inggris yang mengembangkan konsep mesin Turing, landasan teori komputasi modern. Ia juga berkontribusi dalam menguraikan kode Enigma Jerman selama Perang Dunia II dan menjadi pelopor kecerdasan buatan melalui "Turing Test", standar untuk mengukur apakah mesin dapat berpikir seperti manusia.',
+            example: 'Mesin Turing secara teoritis dapat menghitung apa pun yang dapat dihitung, menjadi fondasi semua komputer modern.',
+            tip: 'Belajar dari Turing: pemikiran abstrak dan logika matematis membuka dunia teknologi dan komputasi digital.'
+          }
+        };
+
+        for (const [name, info] of Object.entries(figures)) {
+          if (lower.includes(name)) {
+            if (detailed) {
+              return buildStructuredAnswer(info.short, info.detail, info.example, info.tip, detailed);
+            } else {
+              return buildStructuredAnswer(info.short, info.detail, info.example, info.tip, false);
+            }
+          }
+        }
+
+        return buildStructuredAnswer(
+          'Saya bisa menjelaskan tentang tokoh-tokoh terkenal dunia di bidang sains, seni, kepemimpinan, dan sejarah.',
+          'Tokoh yang bisa saya jelaskan antara lain: Albert Einstein, Isaac Newton, Marie Curie, Leonardo da Vinci, Galileo Galilei, Stephen Hawking, Charles Darwin, Nikola Tesla, Winston Churchill, Mahatma Gandhi, Nelson Mandela, Alan Turing, dan masih banyak lagi.',
+          'Contoh: kamu bisa tanya "Jelaskan Albert Einstein" atau "Siapa tokoh penemu listrik", dan saya akan jelaskan kehidupan, pencapaian, dan pelajaran yang bisa diambil dari mereka.',
+          'Sebutkan nama tokoh yang ingin kamu pelajari, dan saya akan jelaskan latar belakang, pencapaian utama, dan warisan mereka dengan cara yang mudah dipahami.',
+          detailed
+        );
+      }
+
+      let replyMode = 'detail';
+
+      function setReplyMode(mode) {
+        replyMode = mode;
+        document.querySelectorAll('.mode-btn').forEach((button) => {
+          button.classList.toggle('active', button.dataset.mode === mode);
+        });
+      }
+
+      function buildSpiderManCatalog() {
+        return [
+          {
+            name: 'Peter Parker',
+            alias: 'Spider-Man',
+            universe: 'Earth-616',
+            search: 'peter parker',
+            story: 'Peter Parker adalah Spider-Man klasik dari Earth-616, seorang siswa SMA yang mendapat kekuatan laba-laba setelah gigitan laba-laba radioaktif. Ia belajar menjadi pahlawan dengan tanggung jawab besar, kebaikan hati, dan semangat melindungi orang lain.'
+          },
+          {
+            name: 'Miles Morales',
+            alias: 'Spider-Man',
+            universe: 'Earth-1610',
+            search: 'miles morales',
+            story: 'Miles Morales adalah remaja Afrika-Amerika dan Latin yang juga mendapat kekuatan laba-laba. Ia lebih lincah, punya kemampuan bioelektrik, dan cerita khasnya menekankan bahwa menjadi pahlawan bukan soal warisan, tapi pilihan dan keberanian.'
+          },
+          {
+            name: 'Gwen Stacy',
+            alias: 'Spider-Gwen',
+            universe: 'Earth-65',
+            search: 'gwen stacy',
+            story: 'Gwen Stacy adalah versi perempuan Spider-Man dari Earth-65, seorang siswa genius dan pahlawan yang sangat cepat, tangkas, dan berani. Ia membawa gaya baru yang lebih dinamis, dengan cerita yang kuat tentang kehilangan, tanggung jawab, dan semangat baru.'
+          },
+          {
+            name: 'Ben Reilly',
+            alias: 'Scarlet Spider',
+            universe: 'Earth-616',
+            search: 'ben reilly',
+            story: 'Ben Reilly adalah klon Peter Parker yang berusaha hidup dengan identitas sendiri. Ia memakai kostum merah-biru dan dikenal sebagai Scarlet Spider, dengan konflik besar antara perjuangan hidup, identitas, dan keinginan untuk jadi lebih baik.'
+          },
+          {
+            name: 'Otto Octavius',
+            alias: 'Superior Spider-Man',
+            universe: 'Earth-616',
+            search: 'otto octavius',
+            story: 'Setelah tubuh Peter Parker dikuasai oleh Otto Octavius, ia mengambil alih peran Spider-Man dengan cara yang lebih agresif dan strategis. Ceritanya menarik karena menunjukkan sisi yang lebih cerdas, keras, dan kontroversial dari seorang pahlawan.'
+          },
+          {
+            name: 'Kaine Parker',
+            alias: 'Spider-Man',
+            universe: 'Earth-616',
+            search: 'kaine parker',
+            story: 'Kaine Parker adalah klon Peter Parker yang lebih kasar dan lebih berbahaya. Ia menghadapi luka batin, rasa tidak diterima, dan perjalanan untuk mencari arti menjadi manusia, bukan sekadar manusia laba-laba.'
+          },
+          {
+            name: 'Miguel O\'Hara',
+            alias: 'Spider-Man 2099',
+            universe: 'Earth-2099',
+            search: 'miguel o\'hara',
+            story: 'Miguel O\'Hara adalah Spider-Man di masa depan, di dunia cyberpunk yang penuh teknologi. Ia kuat, cerdas, dan memiliki pandangan futuristik tentang moralitas, kemajuan, dan peran pahlawan di masa depan yang keras.'
+          },
+          {
+            name: 'Peter Parker (Amazing Spider-Man)',
+            alias: 'Spider-Man',
+            universe: 'Earth-616',
+            search: 'amazing spider man',
+            story: 'Versi ini paling dikenal karena akar cerita Peter Parker sebagai siswa biasa yang berubah menjadi pahlawan berkat kekuatan besar dan tanggung jawab. Ia menghadapi masalah keluarga, sekolah, karier, dan hubungan dalam kondisi yang sangat manusiawi.'
+          },
+          {
+            name: 'Spider-Man India',
+            alias: 'Pavitr Prabhakar',
+            universe: 'Earth-50101',
+            search: 'pavitr prabhakar',
+            story: 'Pavitr Prabhakar adalah Spider-Man dari India yang tetap menjaga nilai moral, keluarga, dan kebijaksanaan lokal. Ceritanya menonjolkan bahwa semangat Spider-Man bukan hanya soal kekuatan, tapi juga niat baik dan rasa tanggung jawab sosial.'
+          },
+          {
+            name: 'Spider-Man Noir',
+            alias: 'Spider-Man Noir',
+            universe: 'Earth-90214',
+            search: 'spider man noir',
+            story: 'Spider-Man Noir adalah versi dalam dunia noir 1930-an, berkesan gelap, klasik, dan sangat misterius. Ia menghadapi kejahatan dengan gaya brutal, dingin, dan sangat atmosferik, membawa nuansa film detektif hitam-putih yang kuat.'
+          },
+          {
+            name: 'Spider-Man 2099',
+            alias: 'Miguel O\'Hara',
+            universe: 'Earth-2099',
+            search: 'spider man 2099',
+            story: 'Spider-Man 2099 menghadirkan versi pahlawan masa depan dengan teknologi canggih dan dunia yang keras. Cerita utamanya berfokus pada perjuangan melawan korupsi, kekuatan besar, dan kegagalan sistem yang mengerikan.'
+          },
+          {
+            name: 'Spider-Man (PS4 / PS5)',
+            alias: 'Peter Parker / Miles Morales',
+            universe: 'Earth-1048',
+            search: 'spider man ps4',
+            story: 'Versi game ini menampilkan Peter Parker dan Miles Morales dalam perjalanan yang sangat emosional, dengan tekanan pribadi, heroisme, dan pilihan moral yang terasa dekat dengan kehidupan nyata.'
+          }
+        ];
+      }
+
+      function generateSpiderManAnswer(question, detailed = replyMode === 'detail') {
+        const lower = question.toLowerCase();
+        const catalog = buildSpiderManCatalog();
+
+        if (/(list|daftar|semua|versi|universe|yang ada)/i.test(lower) && /spider/i.test(lower)) {
+          const items = catalog.map((item, index) => {
+            return `${index + 1}. ${item.name} (${item.alias}) — ${item.universe}: ${item.story}`;
+          }).join('\n');
+
+          return `Berikut daftar versi Spider-Man yang paling terkenal dari berbagai universe:\n\n${items}\n\nKalau kamu mau, aku bisa jelaskan satu per satu versi yang paling kamu suka, misalnya Peter Parker, Miles Morales, Gwen Stacy, Spider-Man 2099, atau Spider-Man Noir.`;
+        }
+
+        const matched = catalog.find((item) => {
+          return lower.includes(item.search) || lower.includes(item.alias.toLowerCase()) || lower.includes(item.name.toLowerCase());
+        });
+
+        if (matched) {
+          const short = `${matched.name} (${matched.universe}) adalah versi Spider-Man yang unik. ${matched.story}`;
+          if (detailed) {
+            return `${short}\n\nIntinya, versi ini menunjukkan bahwa Spider-Man bukan hanya tentang kekuatan super, tetapi juga tanggung jawab, keberanian, dan pilihan moral yang ia ambil saat menghadapi masalah.`;
+          }
+          return short;
+        }
+
+        return `Spider-Man adalah pahlawan super yang dikenal karena kekuatan laba-laba, kecepatan, kelincahan, dan rasa tanggung jawab. Peter Parker adalah versi paling ikonik, tetapi ada juga Miles Morales, Gwen Stacy, Spider-Man 2099, Spider-Man Noir, dan banyak versi lain dari universe yang berbeda. Kalau kamu ingin, aku bisa kasih daftar lengkap semua versi Spider-Man beserta cerita singkat masing-masing.`;
+      }
+
+      function generateAiReply(question, detailed = replyMode === 'detail') {
+        const q = question.trim();
+        if (!q) return 'Kamu belum menulis pertanyaan.';
+
+        const lower = q.toLowerCase();
+        const topic = detectTopic(lower);
+        let memory = getMemory();
+
+        if (/(nama saya|saya bernama|panggil saya)/i.test(lower)) {
+          const nameMatch = q.match(/(?:nama saya|saya bernama|panggil saya)\s+([a-zA-Z\s]+)/i);
+          if (nameMatch && nameMatch[1]) {
+            memory.name = nameMatch[1].trim();
+            saveMemory(memory);
+            return `Baik, saya akan ingat nama kamu: ${memory.name}. Kalau kamu punya pertanyaan, saya siap bantu dengan cara yang sederhana tapi tetap jelas.`;
+          }
+        }
+
+        if (/(ingat|catat|tahu saya|kamu ingat)/i.test(lower)) {
+          return `Iya, saya ingat kamu adalah ${memory.name}. Kalau ada topik favorit atau tujuan belajar, saya bisa menyesuaikan cara menjawab agar lebih tepat.`;
+        }
+
+        if (/(halo|hai|hello|selamat pagi|selamat siang|selamat sore|selamat malam)/i.test(lower)) {
+          return `Halo juga, ${memory.name}! Saya AI serbaguna yang bisa bantu menjawab pertanyaan di bidang belajar, matematika, coding, sains, sejarah, teknologi, bahasa, dan banyak topik lainnya. Mau tanya apa?`;
+        }
+
+        if (/(siapa.*kamu|anda.*siapa|kamu.*siapa)/i.test(lower)) {
+          return 'Saya adalah AI serbaguna yang dirancang untuk membantu menjawab pertanyaan dengan jelas, cepat, dan mudah dipahami. Saya bisa bantu dalam belajar, coding, teknologi, matematika, sejarah, sains, bahasa, dan banyak topik lain.';
+        }
+
+        if (lower.includes('nama') && lower.includes('mudia')) {
+          return 'Nama pemilik website ini adalah MudiasTira.';
+        }
+
+        if (/(spider.?man|spiderman|spider man)/i.test(lower)) {
+          return generateSpiderManAnswer(q, detailed);
+        }
+
+        if (/(siapa.*mudiastira|siapa.*diasparker|siapa.*mudias|siapa.*dias|siapa.*iyas|apa itu mudiastira|mudiastira siapa)/i.test(lower) || 
+            lower.includes('mudiastira') || lower.includes('diasparker') || lower.includes('mudias') || 
+            (lower.includes('dias') && lower.includes('parker')) || lower.includes('yas')) {
+          return 'Mudiastira atau yang di kenal diasparker adalah tokoh terkenal di dunia, yaitu super hero yang bernama spiderman pertama yang merelakan ingatan semua orang agar melupakan bahwa dias parker adalah spiderman, dia tinggal di new york, dia adalah orang yang relatif humoris ganteng menawan dan sangat baik hati tidak sombong dan rajin menabung, dias parker adalah spiderman yang paling terkuat di antara semua universe, universe dias parker adalah earth-0 atau bumi pertama di dunia.';
+        }
+
+        const mathResult = solveMathQuestion(lower);
+        if (mathResult) {
+          return mathResult;
+        }
+
+        if (/(\d|\bberapa\b|\bhitung\b|\bjumlah\b|\bnilai\b|\btotal\b|\bhasil\b)/.test(lower) && /[+\-*/=]/.test(q)) {
+          const calc = solveMathQuestion(q);
+          if (calc) return calc;
+        }
+
+        switch (topic) {
+          case 'matematika':
+            return buildStructuredAnswer(
+              'Matematika lebih mudah dipahami jika fokus pada konsep, bukan sekadar menghafal rumus.',
+              'Konsep dasar seperti operasi bilangan, persamaan, pola, dan logika sangat penting. Setelah itu, latihan soal rutin akan membuat cara berpikir makin tajam.',
+              'Misalnya, untuk persamaan 2x + 3 = 11, kurangi 3 lalu bagi 2, sehingga x = 4.',
+              'Coba kerjakan 5 soal per hari dan pahami langkahnya satu per satu.',
+              detailed
+            );
+          case 'ipa':
+            return buildStructuredAnswer(
+              'IPA mempelajari alam dan fenomena di sekitar kita dengan cara ilmiah.',
+              'Fisika menjelaskan gerak dan gaya, kimia menjelaskan reaksi zat, dan biologi menjelaskan makhluk hidup serta proses kehidupan.',
+              'Contoh: air berubah menjadi uap ketika dipanaskan karena energi panas memercepat partikel air.',
+              'Gunakan pendekatan bertanya: apa yang diamati, mengapa itu terjadi, dan bagaimana cara membuktikannya.',
+              detailed
+            );
+          case 'sejarah':
+            return buildStructuredAnswer(
+              'Sejarah membantu kita memahami perjalanan manusia, peradaban, dan pelajaran dari masa lalu.',
+              'Untuk belajar sejarah, fokus pada kronologi, tokoh penting, perubahan sosial, dan dampak kejadian pada masa kini.',
+              'Contoh: Revolusi Indonesia bukan hanya peristiwa politik, tetapi juga perubahan mentalitas dan perjuangan bangsa.',
+              'Buat garis waktu agar hubungan antar peristiwa lebih mudah dipahami.',
+              detailed
+            );
+          case 'sosial':
+            return buildStructuredAnswer(
+              'Ilmu sosial membahas manusia dalam hubungan dengan masyarakat, lingkungan, dan kebijakan.',
+              'Bidang seperti geografi, ekonomi, politik, dan budaya saling terkait dalam kehidupan sehari-hari.',
+              'Contoh: harga bahan pokok naik karena ada perubahan distribusi, permintaan, dan biaya produksi.',
+              'Perhatikan hubungan sebab-akibat agar analisis sosial jadi lebih tajam.',
+              detailed
+            );
+          case 'coding':
+            return buildStructuredAnswer(
+              'Belajar coding itu dimulai dari logika, bukan hanya menghafal sintaks.',
+              'Mulai dari variabel, kondisi, loop, fungsi, hingga struktur data sederhana. Setelah itu, praktik membuat proyek kecil agar skill cepat berkembang.',
+              'Contoh: fungsi menghitung luas persegi panjang bisa dibuat dengan parameter panjang dan lebar.',
+              'Latih mini project setiap hari agar logika dan konsistensi naik.',
+              detailed
+            );
+          case 'game':
+            return buildStructuredAnswer(
+              'Game bisa melatih fokus, strategi, dan pengambilan keputusan cepat.',
+              'Yang penting adalah menjaga keseimbangan antara bermain, istirahat, dan waktu belajar supaya tidak mengganggu produktivitas.',
+              'Contoh: dalam game strategi, pemain belajar membaca situasi dan memilih keputusan yang paling tepat.',
+              'Mainkan game secara sehat dan tetap prioritaskan tugas penting terlebih dahulu.',
+              detailed
+            );
+          case 'bahasa':
+            return buildStructuredAnswer(
+              'Bahasa berkembang lewat kosakata, struktur kalimat, dan latihan rutin.',
+              'Untuk bahasa Inggris, fokus pada grammar dasar, kosakata penting, dan percakapan singkat setiap hari.',
+              'Contoh: "I have studied English for two years" menunjukkan penggunaan tenses yang tepat.',
+              'Coba tulis 5-10 kalimat setiap hari agar lebih cepat terbiasa.',
+              detailed
+            );
+          case 'teknologi':
+            return buildStructuredAnswer(
+              'Teknologi berkembang cepat, sehingga kemampuan berpikir kritis dan adaptasi sangat penting.',
+              'Belajar logika, menjaga etika digital, dan terus mencoba tools baru akan membuatmu tetap relevan.',
+              'Contoh: AI bisa membantu analisis data, tetapi keputusan akhir tetap memerlukan manusia yang kritis dan bertanggung jawab.',
+              'Jangan hanya ikut tren, tapi pahami cara kerja teknologi itu.',
+              detailed
+            );
+          case 'psikologi':
+            return buildStructuredAnswer(
+              'Psikologi membantu kita memahami cara berpikir, emosi, dan perilaku manusia.',
+              'Pemahaman diri, manajemen stres, dan kebiasaan sehat sangat memengaruhi produktivitas dan kesejahteraan.',
+              'Contoh: latihan fokus singkat bisa meningkatkan konsentrasi dibandingkan belajar terlalu lama tanpa istirahat.',
+              'Belajar mengenali pola emosi membuat keputusan jadi lebih bijak.',
+              detailed
+            );
+          case 'motivasi':
+            return buildStructuredAnswer(
+              'Kunci sukses bukan hanya semangat, tapi konsistensi dan strategi yang jelas.',
+              'Buat jadwal kecil yang realistis, fokus pada satu target penting, dan evaluasi kemajuan secara rutin.',
+              'Contoh: belajar 30 menit setiap hari lebih efektif dibandingkan belajar 5 jam sekali seminggu.',
+              'Jangan takut salah. Kesalahan adalah bagian dari proses belajar.',
+              detailed
+            );
+          case 'tokoh':
+            return handleFamousFigures(q, detailed);
+          default:
+            break;
+        }
+
+        if (/(cara.*belajar|belajar.*cara|cara.*sukses|sukses.*cara)/i.test(lower)) {
+          return buildStructuredAnswer(
+            'Cara belajar yang efektif adalah memahami konsep, bukan sekadar menghafal.',
+            'Langkahnya: pahami materi, latihan soal, ulangi dengan ringkasan, dan evaluasi hasil belajarmu secara berkala.',
+            'Contoh: setelah membaca bab, tulis 5 poin penting dan jawab 3 pertanyaan pemahaman.',
+            'Belajar yang konsisten jauh lebih kuat daripada belajar saat sedang semangat saja.',
+            detailed
+          );
+        }
+
+        if (lower.includes('apa') && lower.includes('arti')) {
+          return 'Arti kata bisa berubah tergantung konteks. Kalau kamu kirim kata atau kalimat tertentu, saya bisa menjelaskannya dengan cara sederhana, jelas, dan sesuai konteks yang benar.';
+        }
+
+        if (/(perbedaan|beda|bandingkan|compare)/i.test(lower)) {
+          return `Saya bisa bantu membandingkan topik terkait "${q}". Coba jelaskan dua hal yang ingin dibandingkan, lalu saya akan buatkan perbedaan, kelebihan, kekurangan, dan contohnya dalam bentuk yang mudah dipahami.`;
+        }
+
+        if (/(jelaskan|terangkan|apa itu|apakah|mengapa|bagaimana)/i.test(lower)) {
+          return buildStructuredAnswer(
+            `Pertanyaanmu tentang "${q}" bisa dijawab dengan cara yang sederhana dan langsung ke inti.`,
+            'Saya akan fokus pada definisi, alasan, dan contoh agar mudah dipahami tanpa bertele-tele.',
+            'Contoh: jika kamu menanyakan tentang AI, saya bisa jelaskan definisi, cara kerja, manfaat, dan contoh penggunaannya dalam kehidupan sehari-hari.',
+            'Kalau kamu mau, saya bisa menjawab dalam versi singkat, rinci, atau berformat poin.',
+            detailed
+          );
+        }
+
+        if (lower.includes('siapa') || lower.includes('kapan') || lower.includes('mengapa') || lower.includes('bagaimana')) {
+          return `Saya bisa membantu menjawab pertanyaan tentang "${q}" dengan cara yang sederhana, terstruktur, dan mudah dipahami. Kalau kamu mau, saya bisa jelaskan lebih detail, buat ringkasannya, atau ubah ke format poin-poin sesuai kebutuhanmu.`;
+        }
+
+        return `Saya siap membantu topik apa pun, termasuk "${q}". Saya bisa menjawab dari sudut pandang edukatif, praktis, dan mudah dipahami, seperti matematika, sains, sejarah, sosial, teknologi, bahasa, coding, hingga diskusi umum. Kalau mau, lanjutkan dengan pertanyaan yang lebih spesifik agar jawaban saya lebih tepat dan lebih bermanfaat.`;
+      }
+
+      document.querySelectorAll('.mode-btn').forEach((button) => {
+        button.addEventListener('click', () => {
+          setReplyMode(button.dataset.mode);
+          const statusText = button.dataset.mode === 'detail'
+            ? 'Mode aktif: jawab detail agar penjelasannya lebih lengkap.'
+            : 'Mode aktif: jawab singkat agar jawabannya lebih ringkas.';
+          addMessage(statusText, 'bot');
+        });
+      });
+
+      chatForm.addEventListener('submit', function (event) {
+        event.preventDefault();
+        const question = chatInput.value;
+
+        if (!question.trim()) {
+          return;
+        }
+
+        addMessage(question, 'user');
+        chatInput.value = '';
+
+        setTimeout(() => {
+          const reply = generateAiReply(question, replyMode === 'detail');
+          addMessage(reply, 'bot');
+        }, 400);
+      });
+    </script>
+  </body>
+</html>
