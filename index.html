@@ -933,6 +933,12 @@
 
     <script>
       const birthDate = new Date('2010-11-25T00:00:00');
+      const MANUAL_AGE_OVERRIDE = {
+        years: 15,
+        months: 8,
+        days: 2,
+        nextAge: 16
+      };
 
       function diffInMonthsDays(start, end) {
         let months = (end.getFullYear() - start.getFullYear()) * 12 + (end.getMonth() - start.getMonth());
@@ -948,27 +954,11 @@
       }
 
       function getAgeParts() {
-        const now = new Date();
-        let years = now.getFullYear() - birthDate.getFullYear();
-        let months = now.getMonth() - birthDate.getMonth();
-        let days = now.getDate() - birthDate.getDate();
-
-        if (months < 0 || (months === 0 && days < 0)) {
-          years--;
-          months += 12;
-        }
-
-        if (days < 0) {
-          const prevMonth = new Date(now.getFullYear(), now.getMonth(), 0);
-          days += prevMonth.getDate();
-          months--;
-        }
-
-        if (months < 0) {
-          months += 12;
-        }
-
-        return { years, months, days };
+        return {
+          years: MANUAL_AGE_OVERRIDE.years,
+          months: MANUAL_AGE_OVERRIDE.months,
+          days: MANUAL_AGE_OVERRIDE.days
+        };
       }
 
       function getNextBirthdayInfo() {
@@ -986,7 +976,7 @@
         const days = remainingDays % 30;
 
         return {
-          nextAge: now.getFullYear() - birthDate.getFullYear() + 1,
+          nextAge: MANUAL_AGE_OVERRIDE.nextAge,
           months,
           days,
           targetDate: target,
