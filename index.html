@@ -131,6 +131,13 @@
         flex-wrap: wrap;
       }
 
+      .nav-links {
+        display: flex;
+        gap: 20px;
+        font-size: 0.95rem;
+        color: rgba(245, 247, 255, 0.8);
+      }
+
       .google-search {
         display: flex;
         align-items: center;
@@ -163,6 +170,18 @@
         font-weight: 700;
         padding: 8px 12px;
         cursor: pointer;
+      }
+
+      .nav-links a {
+        padding: 8px 12px;
+        border-radius: 999px;
+        transition: 0.2s ease;
+      }
+
+      .nav-links a:hover {
+        color: white;
+        background: linear-gradient(135deg, rgba(225,29,46,0.2), rgba(15,91,216,0.18));
+        box-shadow: inset 0 0 0 1px rgba(255,255,255,0.08);
       }
 
       .hero {
@@ -363,6 +382,377 @@
         position: relative;
         overflow: hidden;
         border: 3px solid rgba(255,255,255,0.16);
+        box-shadow: 0 18px 30px rgba(15,91,216,0.24);
+        object-fit: cover;
+      }
+
+      .avatar::before {
+        content: "";
+        position: absolute;
+        inset: 14px;
+        border: 2px solid rgba(255,255,255,0.25);
+        border-radius: 18px;
+        transform: rotate(2deg);
+      }
+
+      .avatar::after {
+        content: "MudiasTira";
+        position: absolute;
+        left: 20px;
+        bottom: 18px;
+        font-weight: 800;
+        letter-spacing: 1px;
+        color: white;
+        text-shadow: 0 0 12px rgba(0,0,0,0.6);
+      }
+
+      .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 12px;
+        margin-top: 18px;
+      }
+
+      .stat {
+        padding: 14px 12px;
+        background: rgba(15, 23, 42, 0.7);
+        border-radius: 14px;
+        border: 1px solid rgba(255,255,255,0.06);
+        text-align: center;
+      }
+
+      .stat strong {
+        display: block;
+        font-size: 1.1rem;
+        margin-bottom: 4px;
+        color: var(--accent-2);
+      }
+
+      .section {
+        padding: 40px 0;
+      }
+
+      .section-header {
+        margin-bottom: 26px;
+      }
+
+      .section-header h2 {
+        font-size: clamp(1.8rem, 2vw, 2.6rem);
+        margin: 0 0 12px;
+      }
+
+      .section-header p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.8;
+      }
+
+      .info-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 20px;
+      }
+
+      .info-card {
+        background: var(--panel);
+        border: 1px solid rgba(255,255,255,0.08);
+        border-radius: 20px;
+        padding: 22px;
+        box-shadow: var(--shadow);
+      }
+
+      .info-card h3 {
+        margin-top: 0;
+        margin-bottom: 10px;
+        color: var(--accent-2);
+      }
+
+      .info-card p, .info-card li {
+        color: var(--muted);
+        line-height: 1.8;
+      }
+
+      .tag-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 14px;
+      }
+
+      .tag {
+        padding: 8px 12px;
+        border-radius: 999px;
+        background: rgba(34, 211, 238, 0.08);
+        border: 1px solid rgba(34, 211, 238, 0.2);
+        color: var(--accent-2);
+        font-size: 0.85rem;
+      }
+
+      .timeline {
+        display: grid;
+        gap: 18px;
+      }
+
+      .timeline-item {
+        display: grid;
+        grid-template-columns: 160px 1fr;
+        gap: 20px;
+        background: rgba(15, 23, 42, 0.75);
+        border: 1px solid rgba(255,255,255,0.07);
+        padding: 16px 18px;
+        border-radius: 18px;
+      }
+
+      .timeline-year {
+        font-weight: 800;
+        color: var(--accent-3);
+        font-size: 1.1rem;
+      }
+
+      .timeline-item p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.8;
+      }
+
+      .age-box {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 20px;
+      }
+
+      .count-card {
+        background: linear-gradient(180deg, rgba(124, 58, 237, 0.12), rgba(15, 23, 42, 0.9));
+        border: 1px solid rgba(255,255,255,0.08);
+        border-radius: 18px;
+        padding: 20px 18px;
+        text-align: center;
+      }
+
+      .count-card .value {
+        font-size: clamp(1.8rem, 3vw, 2.8rem);
+        font-weight: 800;
+        color: var(--accent-2);
+      }
+
+      .count-card .label {
+        margin-top: 8px;
+        color: var(--muted);
+      }
+
+      .ai-panel {
+        background: linear-gradient(180deg, rgba(34, 211, 238, 0.08), rgba(15, 23, 42, 0.9));
+        border: 1px solid rgba(255,255,255,0.08);
+        border-radius: 24px;
+        padding: 22px;
+        box-shadow: var(--shadow);
+      }
+
+      .chat-box {
+        max-height: 320px;
+        overflow-y: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+        padding: 14px;
+        border-radius: 18px;
+        background: rgba(15, 23, 42, 0.7);
+        border: 1px solid rgba(255,255,255,0.06);
+        margin-bottom: 18px;
+      }
+
+      .msg {
+        display: flex;
+        max-width: 85%;
+      }
+
+      .msg.user {
+        justify-content: flex-end;
+        margin-left: auto;
+      }
+
+      .msg.bot {
+        justify-content: flex-start;
+      }
+
+      .bubble {
+        padding: 12px 14px;
+        border-radius: 16px;
+        line-height: 1.7;
+        color: var(--text);
+      }
+
+      .msg.user .bubble {
+        background: linear-gradient(135deg, var(--accent), var(--accent-2));
+        color: white;
+        border-bottom-right-radius: 6px;
+      }
+
+      .msg.bot .bubble {
+        background: rgba(255,255,255,0.04);
+        border: 1px solid rgba(255,255,255,0.08);
+        border-bottom-left-radius: 6px;
+      }
+
+      .chat-actions {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 14px;
+        flex-wrap: wrap;
+      }
+
+      .mode-btn {
+        border: 1px solid rgba(255,255,255,0.08);
+        background: rgba(15, 23, 42, 0.7);
+        color: var(--muted);
+        border-radius: 999px;
+        padding: 8px 14px;
+        cursor: pointer;
+        font-weight: 700;
+        transition: all 0.2s ease;
+      }
+
+      .mode-btn.active {
+        background: linear-gradient(135deg, var(--accent), var(--accent-2));
+        color: white;
+        border-color: transparent;
+      }
+
+      .chat-form {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 12px;
+      }
+
+      .chat-form input,
+      .google-search-inline input {
+        width: 100%;
+        border: 1px solid rgba(255,255,255,0.08);
+        background: rgba(15, 23, 42, 0.85);
+        color: var(--text);
+        border-radius: 12px;
+        padding: 14px 16px;
+        font-size: 1rem;
+      }
+
+      .google-search-inline {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 12px;
+        margin-top: 18px;
+      }
+
+      .google-search-inline button {
+        border: none;
+        border-radius: 12px;
+        background: linear-gradient(135deg, var(--accent-2), var(--accent));
+        color: white;
+        font-weight: 700;
+        cursor: pointer;
+        padding: 0 18px;
+      }
+
+      .chat-form input:focus {
+        outline: 2px solid rgba(34, 211, 238, 0.35);
+        border-color: rgba(34, 211, 238, 0.4);
+      }
+
+      .chat-form button {
+        border: none;
+        border-radius: 12px;
+        background: linear-gradient(135deg, var(--accent), var(--accent-2));
+        color: white;
+        font-weight: 700;
+        padding: 0 18px;
+        cursor: pointer;
+      }
+
+      footer {
+        padding: 34px 0 60px;
+        color: var(--muted);
+        text-align: center;
+      }
+
+      @media (max-width: 860px) {
+        .hero-wrap,
+        .info-grid,
+        .age-box {
+          grid-template-columns: 1fr;
+        }
+
+        .nav {
+          flex-direction: column;
+          justify-content: center;
+          gap: 12px;
+          padding: 16px 0;
+        }
+
+        .nav-actions {
+          width: 100%;
+          justify-content: center;
+        }
+
+        .nav-links {
+          gap: 10px;
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+
+        .google-search {
+          width: min(100%, 300px);
+        }
+
+        .timeline-item {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="container nav">
+        <div class="brand">Mudias<span>Spidey</span></div>
+        <div class="nav-actions">
+          <nav class="nav-links" aria-label="Navigasi utama">
+            <a href="#profil">Profil</a>
+            <a href="#hobi">Hobi</a>
+            <a href="#ai">AI</a>
+            <a href="#umur">Umur</a>
+            <a href="#kontak">Kontak</a>
+          </nav>
+          <form class="google-search" id="googleSearchForm" action="https://www.google.com/search" method="get" target="_blank">
+            <input type="text" name="q" placeholder="Cari di Google..." aria-label="Cari di Google" />
+            <button type="submit">Cari</button>
+          </form>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="container hero-wrap">
+          <div class="hero-copy">
+            <div class="eyebrow">Halo, Saya MudiasTira</div>
+            <h1>Spidey vibes, <span class="highlight">semangat pahlawan baru</span></h1>
+            <p class="lead">
+              Saya adalah seseorang yang suka bermain game, belajar bahasa Inggris, dan terus
+              mengasah kemampuan dalam coding aplikasi. Saya juga sangat antusias belajar hal baru,
+              berkreasi, dan berkembang setiap hari dengan gaya yang lebih berani, keren, dan penuh semangat seperti Spider-Man.
+            </p>
+            <div class="cta-row">
+              <a class="btn btn-primary" href="#profil">Lihat Profil</a>
+              <a class="btn btn-secondary" href="#umur">Cek Umur Saya</a>
+              <a class="btn btn-secondary" href="#ai">Tanya AI</a>
+            </div>
+
+            <form class="google-search-inline" id="googleSearchInlineForm" action="https://www.google.com/search" method="get" target="_blank">
+              <input type="text" name="q" placeholder="Cari informasi apa pun di Google..." aria-label="Pencarian Google" />
+              <button type="submit">Cari Google</button>
+            </form>
+          </div>
+
+          <div class="profile-card">
+            <img class="portrait-gif portrait-gif-bottom" src="https://media.giphy.com/media/v1rgba(255,255,255,0.16);
         box-shadow: 0 18px 30px rgba(15,91,216,0.24);
         object-fit: cover;
       }
