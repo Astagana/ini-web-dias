@@ -895,7 +895,7 @@
         <div class="container">
           <div class="section-header">
             <h2>Informasi Umur Saya</h2>
-            <p>Berikut data umur saya dan waktu masih tersisa sampai saya naik umur lagi.</p>
+            <p>Berikut data umur saya (dihitung otomatis, mengikuti waktu asli sesuai zona waktu perangkat pengunjung: WIB/WITA/WIT) dan waktu tersisa sampai saya naik umur lagi.</p>
           </div>
 
           <div class="age-box">
@@ -920,6 +920,7 @@
           <div class="section-header" style="margin-top: 28px;">
             <p id="ageSummary" style="font-size: 1.06rem; color: var(--text);"></p>
             <p id="nextBirthdayText" style="font-size: 1.06rem; color: var(--text);"></p>
+            <p id="liveClockText" style="font-size: 0.95rem; color: var(--muted);"></p>
           </div>
         </div>
       </section>
@@ -932,13 +933,45 @@
     </footer>
 
     <script>
-      const birthDate = new Date('2010-11-25T00:00:00');
-      const MANUAL_AGE_OVERRIDE = {
-        years: 15,
-        months: 8,
-        days: 2,
-        nextAge: 16
-      };
+      // ===== Umur berjalan otomatis mengikuti waktu nyata (WIB/WITA/WIT) =====
+      const birthDate = new Date(2010, 10, 25); // 25 November 2010 (bulan 0-index: 10 = November)
+
+      function getViewerTimeZone() {
+        try {
+          return Intl.DateTimeFormat().resolvedOptions().timeZone || 'Asia/Jakarta';
+        } catch (error) {
+          return 'Asia/Jakarta';
+        }
+      }
+
+      // Ambil waktu "sekarang" sesuai zona waktu pengunjung (otomatis WIB/WITA/WIT
+      // tergantung lokasi perangkat yang membuka website)
+      function getZonedNow(timeZone) {
+        const now = new Date();
+        const formatter = new Intl.DateTimeFormat('en-US', {
+          timeZone,
+          year: 'numeric',
+          month: '2-digit',
+          day: '2-digit',
+          hour: '2-digit',
+          minute: '2-digit',
+          second: '2-digit',
+          hour12: false
+        });
+        const parts = formatter.formatToParts(now).reduce((acc, part) => {
+          acc[part.type] = part.value;
+          return acc;
+        }, {});
+        const hour = Number(parts.hour) === 24 ? 0 : Number(parts.hour);
+        return new Date(
+          Number(parts.year),
+          Number(parts.month) - 1,
+          Number(parts.day),
+          hour,
+          Number(parts.minute),
+          Number(parts.second)
+        );
+      }
 
       function diffInMonthsDays(start, end) {
         let months = (end.getFullYear() - start.getFullYear()) * 12 + (end.getMonth() - start.getMonth());
@@ -950,43 +983,47 @@
           months -= 1;
         }
 
+        if (months < 0) months = 0;
+
         return { months, days };
       }
 
-      function getAgeParts() {
-        return {
-          years: MANUAL_AGE_OVERRIDE.years,
-          months: MANUAL_AGE_OVERRIDE.months,
-          days: MANUAL_AGE_OVERRIDE.days
-        };
+      function getAgeParts(now) {
+        const hadBirthdayThisYear =
+          now.getMonth() > birthDate.getMonth() ||
+          (now.getMonth() === birthDate.getMonth() && now.getDate() >= birthDate.getDate());
+
+        let years = now.getFullYear() - birthDate.getFullYear();
+        if (!hadBirthdayThisYear) years -= 1;
+
+        const lastBirthday = new Date(birthDate.getFullYear() + years, birthDate.getMonth(), birthDate.getDate());
+        const { months, days } = diffInMonthsDays(lastBirthday, now);
+
+        return { years, months, days };
       }
 
-      function getNextBirthdayInfo() {
-        const now = new Date();
+      function getNextBirthdayInfo(now) {
         const thisYearBirthday = new Date(now.getFullYear(), birthDate.getMonth(), birthDate.getDate());
         let target = thisYearBirthday;
 
-        if (target < now) {
+        if (target <= now) {
           target = new Date(now.getFullYear() + 1, birthDate.getMonth(), birthDate.getDate());
         }
 
-        const remainingMs = target - now;
-        const remainingDays = Math.ceil(remainingMs / (1000 * 60 * 60 * 24));
+        const remainingMs = target.getTime() - now.getTime();
+        const remainingDays = Math.max(0, Math.floor(remainingMs / (1000 * 60 * 60 * 24)));
         const months = Math.floor(remainingDays / 30);
         const days = remainingDays % 30;
+        const nextAge = target.getFullYear() - birthDate.getFullYear();
 
-        return {
-          nextAge: MANUAL_AGE_OVERRIDE.nextAge,
-          months,
-          days,
-          targetDate: target,
-          remainingDays
-        };
+        return { nextAge, months, days, targetDate: target, remainingDays };
       }
 
       function updateAge() {
-        const age = getAgeParts();
-        const nextBirthday = getNextBirthdayInfo();
+        const timeZone = getViewerTimeZone();
+        const now = getZonedNow(timeZone);
+        const age = getAgeParts(now);
+        const nextBirthday = getNextBirthdayInfo(now);
 
         document.getElementById('ageYears').textContent = age.years;
         document.getElementById('ageMonths').textContent = age.months;
@@ -1000,9 +1037,17 @@
           `Saya akan naik umur lagi dalam ${nextBirthday.months} bulan ${nextBirthday.days} hari, tepatnya pada ${nextBirthday.targetDate.toLocaleDateString('id-ID', {
             day: 'numeric', month: 'long', year: 'numeric'
           })}.`;
+
+        const jamText = now.toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+        const tanggalText = now.toLocaleDateString('id-ID', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
+        document.getElementById('liveClockText').textContent =
+          `Waktu saat ini: ${tanggalText}, pukul ${jamText} (zona waktu terdeteksi: ${timeZone}).`;
       }
 
       updateAge();
+      // Update tiap detik supaya jam berjalan real-time, dan otomatis menambah
+      // hari/bulan/tahun begitu melewati tengah malam sesuai zona waktu pengunjung.
+      setInterval(updateAge, 1000);
 
       // Gemini API Configuration
       const GEMINI_API_KEY = 'AQ.Ab8RN6LggTyUivK-IGYUAVItkFCFHpnm5PgFgva_yw5Cr-T62g'; // Ganti dengan API key Anda
