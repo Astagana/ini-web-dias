@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MudiasTira | AI</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <button type="button" class="sidebar-toggle" id="sidebarToggle" aria-controls="sidebar" aria-expanded="false" aria-label="Buka menu">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    <aside class="sidebar" id="sidebar" aria-label="Sidebar">
+      <div class="brand sidebar-brand">Mudias<span>Spidey</span></div>
+      <nav class="sidebar-nav" aria-label="Menu halaman">
+          <a href="profil.html">Profil</a>
+          <a href="hobi.html">Hobi</a>
+          <a href="ai.html" aria-current="page">AI</a>
+          <a href="umur.html">Umur</a>
+          <a href="kontak.html">Kontak</a>
+      </nav>
+    </aside>
+
+    <div class="page-wrap">
+    <header class="topbar">
+      <div class="container nav">
+        <div class="brand">Mudias<span>Spidey</span></div>
+        <div class="nav-actions">
+          <nav class="nav-links" aria-label="Navigasi utama">
+            <a href="profil.html">Profil</a>
+            <a href="hobi.html">Hobi</a>
+            <a href="ai.html" aria-current="page">AI</a>
+            <a href="umur.html">Umur</a>
+            <a href="kontak.html">Kontak</a>
+          </nav>
+          <form class="google-search" id="googleSearchForm" action="https://www.google.com/search" method="get" target="_blank">
+            <input type="text" name="q" placeholder="Cari di Google..." aria-label="Cari di Google" />
+            <button type="submit">Cari</button>
+          </form>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section id="ai" class="section">
+        <div class="container">
+          <div class="section-header">
+            <h2>AI Serbaguna</h2>
+            <p>Tanya apa saja, kapan saja, tanpa batas topik. AI ini siap membantu menjawab pertanyaan umum, ide, belajar, atau sekadar ngobrol.</p>
+          </div>
+
+          <div class="ai-panel">
+            <div class="chat-actions" aria-label="Mode jawaban AI">
+              <button type="button" class="mode-btn active" data-mode="detail">Jawab Detail</button>
+              <button type="button" class="mode-btn" data-mode="simple">Jawab Singkat</button>
+            </div>
+
+            <div id="chatBox" class="chat-box" aria-live="polite">
+              <div class="msg bot">
+                <div class="bubble">Halo! Saya AI serbaguna. Kamu bisa bertanya apa saja seperti belajar, coding, game, teknologi, atau bahkan sekadar ngobrol. Mode saat ini: jawab detail agar penjelasannya lebih lengkap dan mudah dipahami.</div>
+              </div>
+            </div>
+
+            <form id="chatForm" class="chat-form">
+              <input id="chatInput" type="text" placeholder="Tulis pertanyaanmu di sini..." aria-label="Ketik pertanyaan" />
+              <button type="submit">Kirim</button>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer id="kontak">
+      <div class="container">
+        <p>Terima kasih sudah membaca perkenalan saya. Semoga kita bisa saling kenal lebih dekat.</p>
+      </div>
+    </footer>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script src="js/ai.js"></script>
+  </body>
+</html>
