@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MudiasTira | Umur</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <button type="button" class="sidebar-toggle" id="sidebarToggle" aria-controls="sidebar" aria-expanded="false" aria-label="Buka menu">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    <aside class="sidebar" id="sidebar" aria-label="Sidebar">
+      <div class="brand sidebar-brand">Mudias<span>Spidey</span></div>
+      <nav class="sidebar-nav" aria-label="Menu halaman">
+          <a href="profil.html">Profil</a>
+          <a href="hobi.html">Hobi</a>
+          <a href="ai.html">AI</a>
+          <a href="umur.html" aria-current="page">Umur</a>
+          <a href="kontak.html">Kontak</a>
+      </nav>
+    </aside>
+
+    <div class="page-wrap">
+    <header class="topbar">
+      <div class="container nav">
+        <div class="brand">Mudias<span>Spidey</span></div>
+        <div class="nav-actions">
+          <nav class="nav-links" aria-label="Navigasi utama">
+            <a href="profil.html">Profil</a>
+            <a href="hobi.html">Hobi</a>
+            <a href="ai.html">AI</a>
+            <a href="umur.html" aria-current="page">Umur</a>
+            <a href="kontak.html">Kontak</a>
+          </nav>
+          <form class="google-search" id="googleSearchForm" action="https://www.google.com/search" method="get" target="_blank">
+            <input type="text" name="q" placeholder="Cari di Google..." aria-label="Cari di Google" />
+            <button type="submit">Cari</button>
+          </form>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section id="umur" class="section">
+        <div class="container">
+          <div class="section-header">
+            <h2>Informasi Umur Saya</h2>
+            <p>Berikut data umur saya (dihitung otomatis, mengikuti waktu asli sesuai zona waktu perangkat pengunjung: WIB/WITA/WIT) dan waktu tersisa sampai saya naik umur lagi.</p>
+          </div>
+
+          <div class="age-box">
+            <div class="count-card">
+              <div id="ageYears" class="value">0</div>
+              <div class="label">Tahun</div>
+            </div>
+            <div class="count-card">
+              <div id="ageMonths" class="value">0</div>
+              <div class="label">Bulan</div>
+            </div>
+            <div class="count-card">
+              <div id="ageDays" class="value">0</div>
+              <div class="label">Hari</div>
+            </div>
+            <div class="count-card">
+              <div id="nextAge" class="value">15</div>
+              <div class="label">Umur Berikutnya</div>
+            </div>
+          </div>
+
+          <div class="section-header" style="margin-top: 28px;">
+            <p id="ageSummary" style="font-size: 1.06rem; color: var(--text);"></p>
+            <p id="nextBirthdayText" style="font-size: 1.06rem; color: var(--text);"></p>
+            <p id="liveClockText" style="font-size: 0.95rem; color: var(--muted);"></p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer id="kontak">
+      <div class="container">
+        <p>Terima kasih sudah membaca perkenalan saya. Semoga kita bisa saling kenal lebih dekat.</p>
+      </div>
+    </footer>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script src="js/umur.js"></script>
+  </body>
+</html>
